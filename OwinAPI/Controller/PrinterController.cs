@@ -1,5 +1,7 @@
-﻿using System;
+﻿using OwinAPI.Database;
+using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
@@ -23,7 +25,12 @@ namespace OwinAPI.Controller
             return printerNames.ToList();
         }
 
-        public void Post(string printerName, string text)
+        public void Post()
+        {
+            SQLiteConnection connection = DbFactory.GetConnection();
+        }
+
+        public void Put(string printerName, string text)
         {
             try
             {
